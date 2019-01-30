@@ -1,9 +1,3 @@
-##Before start
-##screen -S connectionfortrans
-##ssh TRANSsite
-##exit
-
-
 ##set env variables###
 DAQ_ROOT_DOMAIN_NAME=DATE
 SMI_STATE=DATEdaq_test_daq::daq_test_control
@@ -13,11 +7,11 @@ SMI_STATE=DATEdaq_test_daq::daq_test_control
 #CURRENT="577"
 DETNAME="GE11-X-S-CERN-0013"
 CURRENT="577"
-TRANSFER="jskim@147.47.242.71:~/Documents/GEM/QC5/"
+
 
 SAVEDIR=/run/media/userSRS/3C10-04F0/GE11-X-S-CERN-0013/
 
-for i in `seq 11 33`;
+for i in `seq 9 10`;
 do
     echo $i" run"
     ##Start Process button on Ready to Start in DAQ_TEST program
@@ -74,7 +68,6 @@ do
     pushd $SAVEDIR
     filename=${DETNAME}"_Run"`printf %04d $i`"_Physics_"${CURRENT}"uA_XRay_40kV_100uA_250kEvt.raw"
     mv cmssrs.raw $filename
-    scp $filename ${TRANSFER}"/"${DETNAME}
     popd
 
 done    
