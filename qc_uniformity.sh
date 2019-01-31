@@ -1,7 +1,10 @@
+##Author:
+#Junho Choi : jhchoi@cern.ch,
+#Jaesung Kim : jskim@cern.ch
+
 ##Before start
 ##screen -S connectionfortrans
 ##ssh TRANSsite
-
 
 ##set env variables###
 DAQ_ROOT_DOMAIN_NAME=DATE
@@ -13,7 +16,6 @@ SMI_STATE=DATEdaq_test_daq::daq_test_control
 DETNAME="GE11-X-S-CERN-0013"
 CURRENT="577"
 TRANSFER="jskim@147.47.242.71:~/Documents/GEM/QC5/"
-
 SAVEDIR=/run/media/userSRS/3C10-04F0/GE11-X-S-CERN-0013/
 
 for i in `seq 2 33`;
