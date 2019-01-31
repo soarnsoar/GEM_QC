@@ -1,7 +1,6 @@
 ##Before start
 ##screen -S connectionfortrans
 ##ssh TRANSsite
-##exit
 
 
 ##set env variables###
