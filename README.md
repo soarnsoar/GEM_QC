@@ -44,7 +44,8 @@ jskim@cern.ch
 ->To trasfer raw outputs without asking passwords.
 
 > screen -S connection_to_transfer
-ssh USERNAME@<Transfer site>
+> ssh USERNAME@<Transfer site>
+
 ctrl+a+d
 
 Now, transfer site doesn't require password when you transfer files via "scp"
