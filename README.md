@@ -5,7 +5,7 @@ jhchoi@cern.ch
 jskim@cern.ch
 
 
-QC5 Response Uniformity Macro.
+ Macro for QC5 Response Uniformity
 
 (1) Do all procedre until test run.(50,000events)
 
