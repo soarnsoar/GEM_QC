@@ -18,6 +18,11 @@ jskim@cern.ch
 **Make sure that all DAQ setup is stable.
 
 
+Get the qc_uniformity.sh via git clone git@github.com:soarnsoar/GEM_QC.git
+
+OR
+
+wget https://raw.githubusercontent.com/soarnsoar/GEM_QC/master/qc_uniformity.sh
 
 
 (2)Set variables in "qc_uniformity.sh"
