@@ -18,18 +18,22 @@ CURRENT="577"
 TRANSFER="jskim@147.47.242.71:~/Documents/GEM/QC5/"
 SAVEDIR=/run/media/userSRS/3C10-04F0/GE11-X-S-CERN-0013/
 
-for i in `seq 2 33`;
+##Run each 250k events
+##i=run number##
+for i in `seq 2 33`; 
 do
     echo $i" run"
-    ##"Start Process" button on "Ready to Start" in DAQ_TEST program
+
+   ##"Start Process" button on "Ready to Start" in DAQ_TEST program
     while [ TRUE ]
     do
 	state=`/ecs/ECS/Linux/smiGetState $SMI_STATE`
 	index=`echo \`expr index "$state" /\``
 	let index-=1
 	state=`echo ${state:0:$index}`
-	if [[ "$state" == "READY" ]]
+	if [[ "$state" == "READY" ]] ##When the button is activated
 	then
+	##Click the button
 	    /opt/smi/linux/smiSendCommand $SMI_STATE START_PROCESSES/CONFIG=DEFAULT
 	    break
 	fi
@@ -43,7 +47,9 @@ do
 	let index-=1
 	state=`echo ${state:0:$index}`
 	if [[ "$state" == "STARTED" ]]
+	##When the button is activated
 	then
+	##Click the button
 	    /opt/smi/linux/smiSendCommand $SMI_STATE START_DATA_TAKING
 	    break
 	fi
@@ -53,6 +59,10 @@ do
     date +%s > /srsconfig/unixstart
     /var/www/cgi-bin/slow_control /var/www/cgi-bin/startTest.txt
 
+    ##Now run a 250k event job.
+
+
+    ##Check the run is finished##
     while [ TRUE ]
     do
 	##Check status == READY ( When "Start Process" butteon on "Ready to Start" is activated ), 
@@ -67,6 +77,7 @@ do
         then
 	    
 	    break
+	    ##If the run is finished, break the loop
         fi
 	sleep 30
     done
@@ -75,7 +86,7 @@ do
     /var/www/cgi-bin/slow_control /var/www/cgi-bin/stopTest.txt
 
     ##change filename
-    pushd $SAVEDIR ##Go to the location where cmssrs.raw is
+    pushd $SAVEDIR ##Go to the location where "cmssrs.raw" is
     filename=${DETNAME}"_Run"`printf %04d $i`"_Physics_"${CURRENT}"uA_XRay_40kV_100uA_250kEvt.raw"
     mv cmssrs.raw $filename
     scp $filename ${TRANSFER}"/"${DETNAME}
