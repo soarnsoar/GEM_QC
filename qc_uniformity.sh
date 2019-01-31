@@ -17,7 +17,7 @@ TRANSFER="jskim@147.47.242.71:~/Documents/GEM/QC5/"
 
 SAVEDIR=/run/media/userSRS/3C10-04F0/GE11-X-S-CERN-0013/
 
-for i in `seq 11 33`;
+for i in `seq 2 33`;
 do
     echo $i" run"
     ##Start Process button on Ready to Start in DAQ_TEST program
