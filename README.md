@@ -12,7 +12,7 @@ jskim@cern.ch
 - SCRIBE configuration
 - Zero Suppression
 - Test run with 50,000 events.
-- Then, set number of subevent = 250,000 events
+- Then, set number of subevent = 250,000 events in "Date"(DAQ_TEST program)
 
 
 **Make sure that all DAQ setup is stable.
