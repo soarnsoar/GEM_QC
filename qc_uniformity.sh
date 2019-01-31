@@ -20,7 +20,7 @@ SAVEDIR=/run/media/userSRS/3C10-04F0/GE11-X-S-CERN-0013/
 for i in `seq 2 33`;
 do
     echo $i" run"
-    ##Start Process button on Ready to Start in DAQ_TEST program
+    ##"Start Process" button on "Ready to Start" in DAQ_TEST program
     while [ TRUE ]
     do
 	state=`/ecs/ECS/Linux/smiGetState $SMI_STATE`
@@ -33,7 +33,7 @@ do
 	    break
 	fi
     done
-     ##Start button in Data taking in DAQ_TEST
+     ##"Start" button in "Data taking" in DAQ_TEST
     
     while [ TRUE ]
     do
@@ -48,13 +48,16 @@ do
 	fi
     done
     
-    ##Start run in DAQ tap of SCRIBE
+    ##"Start run" in DAQ tap of SCRIBE
     date +%s > /srsconfig/unixstart
     /var/www/cgi-bin/slow_control /var/www/cgi-bin/startTest.txt
 
     while [ TRUE ]
     do
-	##Check status == READY
+	##Check status == READY ( When "Start Process" butteon on "Ready to Start" is activated ), 
+	##which means the run is finished
+	##Every 30 secs
+	
         state=`/ecs/ECS/Linux/smiGetState $SMI_STATE`
         index=`echo \`expr index "$state" /\``
         let index-=1
@@ -67,14 +70,17 @@ do
 	sleep 30
     done
     
-    ##stop run
+    ##"stop run" in DAQ tap of SCRIBE 
     /var/www/cgi-bin/slow_control /var/www/cgi-bin/stopTest.txt
 
     ##change filename
-    pushd $SAVEDIR
+    pushd $SAVEDIR ##Go to the location where cmssrs.raw is
     filename=${DETNAME}"_Run"`printf %04d $i`"_Physics_"${CURRENT}"uA_XRay_40kV_100uA_250kEvt.raw"
     mv cmssrs.raw $filename
     scp $filename ${TRANSFER}"/"${DETNAME}
     popd
-
+##Go back to the next run.
 done    
+
+
+echo "@@FINISH : QC5 UNIFORMITY@@"
