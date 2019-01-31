@@ -44,6 +44,8 @@ jskim@cern.ch
 ->To trasfer raw outputs without asking passwords.
 
 > screen -S connection_to_transfer
+
+
 > ssh USERNAME@TRANSFER_SITE
 
 ctrl+a+d
