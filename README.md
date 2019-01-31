@@ -33,7 +33,8 @@ jskim@cern.ch
 - Set "SAVEDIR" to directory where "cmssrs.raw" is created.
 >(e.g) SAVEDIR=/run/media/userSRS/3C10-04F0/GE11-X-S-CERN-0013/
 
-- in line#21, for-statement, set the initial&last value of 'i'. 
+- in #21, for-statement, set the initial&last value of 'i'.
+->Set I_START and I_FINAL
 'i' is each run number.
 
 **Basically, we set it 2 and 33 each. (=> 32 runs)
