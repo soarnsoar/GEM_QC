@@ -24,7 +24,9 @@ jskim@cern.ch
 - Set "DETNAME" to the chamber name
 - Set "CURRENT" to the I_mon (in uA) current in HV module.
 - Set "Transfer" to the site where to transfer the raw outputs.
->(e.g) jhchoi@lxplus.cern.ch:~/GEM/QC5/
+
+>(e.g) Transfer="jhchoi@lxplus.cern.ch:~/GEM/QC5/"
+
 - Set "SAVEDIR" to directory where "cmssrs.raw" is created.
 - in line#20, for-statement, set the initial&last value of 'i'. 
 
