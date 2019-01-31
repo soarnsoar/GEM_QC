@@ -2,6 +2,10 @@
 #Junho Choi : jhchoi@cern.ch,
 #Jaesung Kim : jskim@cern.ch
 
+#Reference 
+#/var/www/html/srs_v3.php
+#/var/www/cgi-bin/start_Date.sh
+
 ##Before start
 ##screen -S connectionfortrans
 ##ssh TRANSsite
@@ -17,10 +21,11 @@ DETNAME="GE11-X-S-CERN-0013"
 CURRENT="577"
 TRANSFER="jskim@147.47.242.71:~/Documents/GEM/QC5/"
 SAVEDIR=/run/media/userSRS/3C10-04F0/GE11-X-S-CERN-0013/
-
+I_START=2
+I_FINAL=33
 ##Run each 250k events
 ##i=run number##
-for i in `seq 2 33`; 
+for i in `seq ${I_START} ${I_FINAL}`; 
 do
     echo $i" run"
 
