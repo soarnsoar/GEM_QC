@@ -94,7 +94,7 @@ do
     pushd $SAVEDIR ##Go to the location where "cmssrs.raw" is
     filename=${DETNAME}"_Run"`printf %04d $i`"_Physics_"${CURRENT}"uA_XRay_40kV_100uA_250kEvt.raw"
     mv cmssrs.raw $filename
-    scp $filename ${TRANSFER}"/"${DETNAME}
+    scp $filename ${TRANSFER}"/"
     popd
 ##Go back to the next run.
 done    
