@@ -28,25 +28,27 @@ I_FINAL=33
 touch TEST_SCP_QC5
 echo "@@Checking SCP@@"
 scp TEST_SCP_QC5 $TRANSFER
-echo "@@If SCP requires password, transfer will be stuck@@"
-echo -e "Continue? [y/n] : \c"
-read ANS_CONTINUE
 
 ANSWERED=0
 
 
 
 
-while [ $ANSWERED -q 0 ]
+while [ $ANSWERED -eq 0 ]
 do
 
+    echo "@@If SCP requires password, transfer will be stuck@@"
+    echo -e "Continue? [y/n] : \c"
+    read ANS_CONTINUE
+
+    
     if [ "$ANS_CONTINUE" = "y" ]; then
         echo "@@Start run!@@"
         ANSWERED=1
-    elif [ "$ANS_CONTINUE" = "n"; then
+    elif [ "$ANS_CONTINUE" = "n" ]; then
         echo "@@STOP run. Please check your ssh connection to transfer site@@"
         ANSWERD=1
-        exit
+        return
     else
         echo "Please answer in y OR n"
         ANSWERD=0
@@ -63,8 +65,8 @@ if [[ "$state" == "READY" ]] ##When the button is activated
 then
     echo "@Start Process is on@"
 else
-    echo "@@@Start Process is ont activated !!! Please check the Date program@@ "
-    exit
+    echo "@@@Start Process is not activated !!! Please check the Date program@@ "
+    return
 fi
 
 ##Run each 250k events
